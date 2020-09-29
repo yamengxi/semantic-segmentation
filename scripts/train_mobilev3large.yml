@@ -1,0 +1,28 @@
+# Train MobileNetV3-Large + LR-ASPP on cityscapes using gtFine weights
+# Requires 32GB GPU
+# Adjust nproc_per_node according to how many GPUs you have
+
+CMD: "python -m torch.distributed.launch --nproc_per_node=8 train.py"
+
+HPARAMS:
+  [
+    {
+      dataset: cityscapes,
+      cv: 2,
+      arch: lraspp.MobileV3Large,
+      max_cu_epoch: 150,
+      max_epoch: 175,
+      lr: 1e-2,
+      lr_schedule: poly,
+      poly_exp: 1.0,
+      syncbn: true,
+      optimizer: sgd,
+      full_crop_training: true,
+      apex: true,
+      fp16: true,
+      rmi_loss: true,
+
+      result_dir: LOGDIR,
+      RUNX.TAG: "fastseg-cv2-{arch}",
+    },
+  ]

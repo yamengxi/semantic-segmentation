@@ -1,4 +1,11 @@
 """
+This file was modified by Eric Zhang, including code from FastSeg:
+https://github.com/ekzhang/fastseg
+
+The original copyright notice is reproduced below.
+
+--
+
 Copyright 2020 Nvidia Corporation
 
 Redistribution and use in source and binary forms, with or without
@@ -40,6 +47,7 @@ from network.wider_resnet import wrn38
 from network.SEresnext import se_resnext50_32x4d, se_resnext101_32x4d
 from network.Resnet import resnet50, resnet101
 import network.hrnetv2 as hrnetv2
+from network.mobilenetv3 import MobileNetV3_Large, MobileNetV3_Small
 
 from runx.logx import logx
 from config import cfg
@@ -134,6 +142,16 @@ def get_trunk(trunk_name, output_stride=8):
         high_level_ch = backbone.high_level_ch
         s2_ch = -1
         s4_ch = -1
+    elif trunk_name == 'mobilenetv3_large':
+        backbone = MobileNetV3_Large(pretrained=False)
+        s2_ch = 16
+        s4_ch = 24
+        high_level_ch = 320
+    elif trunk_name == 'mobilenetv3_small':
+        backbone = MobileNetV3_Small(pretrained=False)
+        s2_ch = 16
+        s4_ch = 16
+        high_level_ch = 256
     else:
         raise 'unknown backbone {}'.format(trunk_name)
 

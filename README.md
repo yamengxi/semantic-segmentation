@@ -33,7 +33,7 @@ In general, you can either use the runx-style commandlines shown below. Or you c
 Train cityscapes, using MobileNetV3-Large + LR-ASPP with fine annotations data.
 
 ```bash
-> python -m runx.runx scripts/train_mobilenet_large.yml -i
+> python -m runx.runx scripts/train_mobilev3_large.yml -i
 ```
 
 The first time this command is run, a centroid file has to be built for the dataset. It'll take about 10 minutes. The centroid file is used during training to know how to sample from the dataset in a class-uniform way.
@@ -46,7 +46,7 @@ from fastseg import MobileV3Large
 model = MobileV3Large.from_pretrained('checkpoint.pth')
 ```
 
-Under the default training configuration, this model should have 3.6M parameters and F=256 filters in the segmentation head. You can experiment with modifying the configuration in `scripts/train_mobilenet_large.yml` to train other models, such as those based on MobileNetV3-Small.
+Under the default training configuration, this model should have 3.2M parameters and F=128 filters in the segmentation head. You can experiment with modifying the configuration in `scripts/train_mobilev3_large.yml` to train other models. If your GPU does not have enough memory to train, you can try reducing the batch size `bs_trn` or input crop size.
 
 ## Notes from Eric
 
