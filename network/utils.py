@@ -146,12 +146,14 @@ def get_trunk(trunk_name, output_stride=8):
         backbone = MobileNetV3_Large(pretrained=False)
         s2_ch = 16
         s4_ch = 24
-        high_level_ch = 320
+        high_level_ch = 960
+        # high_level_ch = 320
     elif trunk_name == 'mobilenetv3_small':
         backbone = MobileNetV3_Small(pretrained=False)
         s2_ch = 16
         s4_ch = 16
-        high_level_ch = 256
+        high_level_ch = 576
+        # high_level_ch = 256
     else:
         raise 'unknown backbone {}'.format(trunk_name)
 

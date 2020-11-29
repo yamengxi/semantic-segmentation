@@ -111,8 +111,8 @@ class LRASPP(nn.Module):
         if self.training:
             assert 'gts' in inputs
             gts = inputs['gts']
-            return self.criterion(x, gts)
-        return {'pred': x}
+            return self.criterion(y, gts)
+        return {'pred': y}
 
 
 class MobileV3Large(LRASPP):

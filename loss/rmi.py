@@ -87,6 +87,7 @@ class RMILoss(nn.Module):
                 labels_4D 	:	[N, H, W], dtype=long
                 do_rmi          :       bool
         """
+        # 注：labels_4D实际上是一个三维的tensor！
         # label mask -- [N, H, W, 1]
         label_mask_3D = labels_4D < self.num_classes
 

@@ -76,7 +76,7 @@ __C.TRAIN.FP16 = False
 __C.DATASET = AttrDict()
 #Cityscapes Dir Location
 __C.DATASET.CITYSCAPES_DIR = \
-  os.path.join(__C.ASSETS_PATH, 'data/Cityscapes')
+  os.path.join(__C.ASSETS_PATH, '/mnt/lustre/yamengxi/data/cityscapes')
 __C.DATASET.CITYSCAPES_CUSTOMCOARSE = \
   os.path.join(__C.ASSETS_PATH, 'data/Cityscapes/autolabelled')
 __C.DATASET.CENTROID_ROOT = \

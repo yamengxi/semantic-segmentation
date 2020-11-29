@@ -1,0 +1,6 @@
+# discard logs
+logs/
+
+# discard python cache
+*/__pycache__/
+__pycache__/

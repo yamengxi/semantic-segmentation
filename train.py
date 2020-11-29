@@ -447,7 +447,6 @@ def main():
                 train_obj.build_epoch()
         else:
             pass
-
         train(train_loader, net, optim, epoch)
 
         if args.apex:
@@ -476,6 +475,8 @@ def train(train_loader, net, optim, curr_epoch):
     train_main_loss = AverageMeter()
     start_time = None
     warmup_iter = 10
+
+    print("==========Start training!==========")
 
     for i, data in enumerate(train_loader):
         if i <= warmup_iter:
